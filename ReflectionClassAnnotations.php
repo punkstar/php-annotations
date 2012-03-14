@@ -1,12 +1,17 @@
 <?php
+/**
+ * Allow for annotation inspection in PHP classes.
+ */
 class ReflectionClassAnnotations {
     const REGEX_ANNOTATION = '/@(?P<name>\w+)\s+(?P<value>.+)/';
     
     protected $_reflection = null;
+    protected $_matches    = null;
+    protected $_count      = 0;
     
-    protected $_matches = null;
-    protected $_count = 0;
-    
+    /**
+     * @return string|object
+     */
     public function __construct($class) {
         if (is_object($class)) {
             $classname = get_class($class);
@@ -15,10 +20,12 @@ class ReflectionClassAnnotations {
         }
         
         $this->_reflection = new ReflectionClass($classname);
-        $this->_count = preg_match_all(self::REGEX_ANNOTATION, $this->_getCommentBlock(), $this->_matches);
+        $this->_count      = preg_match_all(self::REGEX_ANNOTATION, $this->_getCommentBlock(), $this->_matches);
     }
     
     /**
+     * Get the class comment.
+     *
      * @return string
      */
     protected function _getCommentBlock() {
@@ -26,6 +33,8 @@ class ReflectionClassAnnotations {
     }
     
     /**
+     * Return the raw array of all annotations.
+     *
      * @return array
      */
     public function getAnnotationsRaw() {
@@ -33,12 +42,20 @@ class ReflectionClassAnnotations {
     }
     
     /**
+     * Get the number of annotations on the class.
+     *
      * @return int
      */
     public function getAnnotationsCount() {
         return $this->_count;
     }
     
+    /**
+     * Return an array of annotation values for the given $name.
+     *
+     * @param string $name
+     * @return array
+     */
     public function getAnnotation($name) {
         $result = array();
         
@@ -50,7 +67,12 @@ class ReflectionClassAnnotations {
         
         return $result;
     }
-    
+
+    /**
+     * Return a nested array of all annotation values.
+     * 
+     * @return array
+     */    
     public function getAllAnnotations() {
         $result = array();
         
