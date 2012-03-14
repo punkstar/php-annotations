@@ -39,9 +39,12 @@ class SimpleTest extends PHPUnit_Framework_TestCase {
     public function testGetAnnotation() {
         $result_test  = $this->_obj->getAnnotation('test');
         $result_param = $this->_obj->getAnnotation('param');
+        $result_nonexistent = $this->_obj->getAnnotation('idontexist');
         
         $this->assertEquals(1, count($result_test));
         $this->assertEquals(2, count($result_param));
+        
+        $this->assertEquals(0, count($result_nonexistent));
         
         $this->assertEquals('Test1', $result_test[0]);
         $this->assertEquals('test1', $result_param[0]);
