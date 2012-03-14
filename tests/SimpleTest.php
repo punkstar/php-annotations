@@ -2,6 +2,8 @@
 require 'ReflectionClassAnnotations.php';
 
 /**
+ * This isn't an annotation.
+ *
  * @test Test1
  * @param test1
  * @param test2 test3
