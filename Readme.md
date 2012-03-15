@@ -49,7 +49,7 @@ We can now perform our reflection:
 
 [![Build Status](https://secure.travis-ci.org/punkstar/php-annotations.png?branch=master)](http://travis-ci.org/punkstar/php-annotations)
 
-A basic test suite is provided with the class.  You can test yourself by running `phpunit` in the root directory.  I've also hooked this repository up to [Travis](http://travis-cs.org/punkstar/php-annotations) for continuous integration.
+A basic test suite is provided with the class.  You can test yourself by running `phpunit` in the root directory.  I've also hooked this repository up to [Travis](http://travis-ci.org/punkstar/php-annotations) for continuous integration.
     
 ### License
 
